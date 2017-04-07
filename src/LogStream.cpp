@@ -47,4 +47,9 @@ namespace rookie{
         buf_.append(temp_buf);
         return *this;
     }
+
+    LogStream& LogStream::operator<<(const char rhs){
+        buf_.push_back(rhs);
+        return *this;
+    };
 }

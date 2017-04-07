@@ -1,13 +1,24 @@
-#include <netinet/in.h>
+#ifndef HELLO_SOCKET_H
+#define HELLO_SOCKET_H
 #include <cstdint>
-
-
-class Socket{
-public:
-    Socket();
+#include <tuple>
+#include <netinet/in.h>
 
 
 
-private:
-    int fd_;
+namespace rookie{
+    class Socket{
+    public:
+        Socket();
+        ~Socket();
+        std::tuple<int, sockaddr_in> accept();
+        void close();
+
+    private:
+        void initialize();
+        int fd_;
+    };
 };
+
+
+#endif //HELLO_SOCKET_H

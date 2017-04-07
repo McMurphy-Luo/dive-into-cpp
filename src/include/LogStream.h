@@ -11,6 +11,8 @@
 namespace rookie{
     class LogStream: boost::noncopyable{
     public:
+        static constexpr char endl = '\n';
+    public:
         LogStream():buf_(){};
         virtual ~LogStream(){};
         LogStream& operator<<(const int32_t rhs);
@@ -19,6 +21,7 @@ namespace rookie{
         LogStream& operator<<(const char* rhs);
         LogStream& operator<<(const double rhs);
         LogStream& operator<<(const long double rsh);
+        LogStream& operator<<(const char rhs);
 
     protected:
         std::string buf_;

@@ -12,6 +12,7 @@ namespace rookie{
     public:
         CErrorLog():LogStream(){};
         ~CErrorLog();
+        void logCStdError();
         void flush();
     };
 }

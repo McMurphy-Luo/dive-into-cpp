@@ -8,7 +8,7 @@ set(lib_output_dir ${PROJECT_BINARY_DIR}/lib)
 find_package(Boost REQUIRED)
 
 set(CMAKE_CXX_COMPILER "g++")
-set(CMAKE_CXX_FLAGS "-std=c++11 -Werror -Wall -O0")
+set(CMAKE_CXX_FLAGS "-std=c++17 -Werror -Wall -O0")
 
 
 include_directories(${include_dir})
