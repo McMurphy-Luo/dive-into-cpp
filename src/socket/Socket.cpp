@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iostream>
 #include <functional>
-#include "CErrorLog.h"
+#include <logstream/CErrorLog.h>
 
 namespace rookie{
     Socket::Socket():
