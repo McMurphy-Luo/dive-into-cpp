@@ -1,0 +1,8 @@
+CMakeFiles
+bin
+cmake-build-debug
+temp
+CMakeCache.txt
+cmake_install.cmake
+hello.cbp
+Makefile

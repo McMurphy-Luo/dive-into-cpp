@@ -4,17 +4,18 @@
 
 #ifndef HELLO_FILE_H
 #define HELLO_FILE_H
-#include <cstdio>
 #include <string>
 
 namespace rookie{
     class File {
     public:
-        explicit File(std::string path);
+        explicit File(std::string path):path_(path) { };
         bool exists();
+        std::string getPath() { return path_; };
+
 
     private:
-        FILE* file_;
+        std::string path_;
     };
 }
 
