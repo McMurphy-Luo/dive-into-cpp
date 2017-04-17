@@ -18,7 +18,7 @@ namespace rookie{
         return S_ISREG(buf.st_mode);
     };
 
-    bool File::exists() {
+    bool File::exists() const {
         return isRegularFile(path_);
     };
 }

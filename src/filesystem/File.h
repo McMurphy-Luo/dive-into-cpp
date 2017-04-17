@@ -13,8 +13,8 @@ namespace rookie{
     public:
         explicit File(std::string path):path_(path) { };
         virtual ~File(){};
-        virtual bool exists();
-        virtual std::string getPath() { return path_; };
+        virtual bool exists() const;
+        virtual std::string getPath() const { return path_; } ;
 
     protected:
         std::string path_;

@@ -43,11 +43,11 @@ namespace rookie{
         return S_ISDIR(buf.st_mode);
     };
 
-    bool Directory::exists(){
+    bool Directory::exists() const{
         return isDirectory(path_);
     };
 
-    std::vector<std::shared_ptr<File>> Directory::children(){
+    std::vector<std::shared_ptr<File>> Directory::children() const{
         typedef std::vector<std::shared_ptr<File>> result_t;
 
         auto dir_handler = get_dir_handler(path_);

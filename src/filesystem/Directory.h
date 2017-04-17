@@ -18,8 +18,8 @@ namespace rookie{
     public:
         explicit Directory(std::string path)
                 :File(path){};
-        bool exists();
-        std::vector<std::shared_ptr<File>> children();
+        bool exists() const;
+        std::vector<std::shared_ptr<File>> children() const;
     };
 }
 

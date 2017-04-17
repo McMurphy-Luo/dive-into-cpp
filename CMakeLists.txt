@@ -5,7 +5,7 @@ set(source_dir ${PROJECT_SOURCE_DIR}/src)
 set(exe_output_dir ${PROJECT_BINARY_DIR}/bin)
 set(lib_output_dir ${PROJECT_BINARY_DIR}/lib)
 find_package(Boost REQUIRED)
-set(CMAKE_CXX_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_FLAGS "-Werror -Wall -Wextra -O0")
 include_directories(${source_dir})
 include_directories(${BOOST_INCLUDE_DIRS})
@@ -33,4 +33,3 @@ list(APPEND source
 
 add_executable(filesystem_test ${source} test/filesystem/main.cpp)
 set_property(TARGET filesystem_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
-target_link_libraries(filesystem_test stdc++)
