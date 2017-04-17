@@ -3,77 +3,81 @@
 //
 
 #include "Directory.h"
+#include <memory>
+#include <cstring>
+#include <functional>
 #include <cerrno>
 #include <dirent.h>
 #include <sys/stat.h>
 #include <logstream/CErrorLog.h>
 
 namespace rookie{
-
     namespace{
-        DIR* get_dir_handler(std::string& path){
-            DIR* dir_handler = opendir(path.c_str());
-            if (dir_handler) {
-                return dir_handler;
+        typedef std::unique_ptr<DIR, std::function<void(DIR*)>> dir_handler_t;
+        dir_handler_t get_dir_handler(const std::string& path){
+            auto result = dir_handler_t(
+                    opendir(path.c_str()),
+                    [](DIR* handler) -> void{
+                        if (handler) {
+                            closedir(handler);
+                        }
+                    }
+            );
+            if (!result) {
+                CErrorLog log;
+                log << "open directory error;" << CErrorLog::endl;
+                log.logCStdError();
             }
-            CErrorLog log;
-            log << "open directory error;" << CErrorLog::endl;
-            log.logCStdError();
-            return nullptr;
+            return result;
         };
     }
-    bool Directory::exists(){
+
+    bool Directory::isDirectory(const std::string &path) {
         struct stat buf;
-        int result = stat(path_.c_str(), &buf);
-        CErrorLog log;
-        if (result != -1){
-            return S_ISDIR(buf.st_mode);
+        if (stat(path.c_str(), &buf) != 0){
+            CErrorLog log;
+            log << "stat error!" << CErrorLog::endl;
+            log.logCStdError();
+            return false;
         }
-        log << "stat error!" << CErrorLog::endl;
-        log.logCStdError();
-        return false;
+        return S_ISDIR(buf.st_mode);
     };
 
-    std::vector<std::string> Directory::children(){
-        typedef std::vector<std::string> result_t;
-        CErrorLog log;
+    bool Directory::exists(){
+        return isDirectory(path_);
+    };
 
-        DIR* dir_handler = get_dir_handler(path_);
+    std::vector<std::shared_ptr<File>> Directory::children(){
+        typedef std::vector<std::shared_ptr<File>> result_t;
 
+        auto dir_handler = get_dir_handler(path_);
         if (!dir_handler){
             return result_t();
         }
         result_t result;
         dirent* dir_read;
+
         errno = 0;
-        while((dir_read = readdir(dir_handler)) != nullptr){
-            result.push_back(std::string(dir_read->d_name));
+        while((dir_read = readdir(dir_handler.get())) != nullptr){
+            if (std::strcmp(dir_read->d_name, ".") == 0
+                    || std::strcmp(dir_read->d_name, "..") == 0){
+                continue;
+            }
+            std::string child_path = path_ + "/" + dir_read->d_name;
+            if (isRegularFile(child_path)){
+                result.push_back( std::make_shared<File>(child_path) );
+                continue;
+            }
+            if (isDirectory(child_path)){
+                result.push_back( std::make_shared<Directory>(child_path) );
+                continue;
+            }
         }
         if (errno != 0){
+            CErrorLog log;
+            log << "readdir error!" << CErrorLog::endl;
             log.logCStdError();
         }
-        closedir(dir_handler);
         return result;
-    };
-
-    std::vector<File> Directory::getChildFiles() {
-        using result_t = std::vector<File>
-
-        DIR* dir_handler = get_dir_handler(path_);
-        if (!dir_handler){
-            return result_t();
-        }
-        result_t result();
-
-        dirent* dir_read;
-        errno = 0;
-        while( (dir_read = readdir(dir_handler)) != nullptr ){
-
-        }
-
-    };
-
-    std::vector<Directory> Directory::getChildDirectories() {
-
     };
 }

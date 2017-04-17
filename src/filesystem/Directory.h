@@ -7,20 +7,19 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "File.h"
 
 namespace rookie{
-    class Directory{
+    class Directory : public File{
     public:
-        explicit Directory(std::string path):path_(path){};
-        bool exists();
-        std::string getPath() { return path_; };
-        std::vector<std::string> children();
-        std::vector<File> getChildFiles();
-        std::vector<Directory> getChildDirectories();
+        static bool isDirectory(const std::string &path);
 
-    private:
-        std::string path_;
+    public:
+        explicit Directory(std::string path)
+                :File(path){};
+        bool exists();
+        std::vector<std::shared_ptr<File>> children();
     };
 }
 

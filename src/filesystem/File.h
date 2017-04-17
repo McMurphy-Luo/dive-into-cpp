@@ -9,12 +9,14 @@
 namespace rookie{
     class File {
     public:
+        static bool isRegularFile(const std::string &path);
+    public:
         explicit File(std::string path):path_(path) { };
-        bool exists();
-        std::string getPath() { return path_; };
+        virtual ~File(){};
+        virtual bool exists();
+        virtual std::string getPath() { return path_; };
 
-
-    private:
+    protected:
         std::string path_;
     };
 }

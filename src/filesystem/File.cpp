@@ -3,18 +3,22 @@
 //
 
 #include "File.h"
-#include <unistd.h>
+#include <sys/stat.h>
 #include <logstream/CErrorLog.h>
 
 namespace rookie{
-    bool File::exists() {
-        int test_result = access(path_.c_str(), F_OK);
-        if (test_result != -1)
-        {
-            return true;
+    bool File::isRegularFile(const std::string &path) {
+        struct stat buf;
+        if (stat(path.c_str(), &buf) != 0){
+            CErrorLog log;
+            log << "stat error!" << CErrorLog::endl;
+            log.logCStdError();
+            return false;
         }
-        CErrorLog log;
-        log.logCStdError();
-        return false;
+        return S_ISREG(buf.st_mode);
+    };
+
+    bool File::exists() {
+        return isRegularFile(path_);
     };
 }
