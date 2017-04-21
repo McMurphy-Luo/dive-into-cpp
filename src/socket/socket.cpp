@@ -1,8 +1,8 @@
-#include "Socket.h"
+#include "socket.h"
 #include <cstring>
 #include <iostream>
 #include <functional>
-#include <logstream/CErrorLog.h>
+#include <logstream/cerr_log.h>
 
 namespace rookie{
     Socket::Socket():

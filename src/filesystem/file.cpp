@@ -2,9 +2,9 @@
 // Created by luojiayi on 4/15/17.
 //
 
-#include "File.h"
+#include "file.h"
 #include <sys/stat.h>
-#include <logstream/CErrorLog.h>
+#include <logstream/cerr_log.h>
 
 namespace rookie{
     bool File::isRegularFile(const std::string &path) {

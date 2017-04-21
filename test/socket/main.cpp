@@ -2,8 +2,8 @@
 #include <tuple>
 #include <iostream>
 #include <unistd.h>
-#include "CErrorLog.h"
-#include "Socket.h"
+#include "cerr_log.h"
+#include "socket.h"
 
 int main(int argc, char* argv[]){
     rookie::CErrorLog log;

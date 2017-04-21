@@ -3,7 +3,7 @@
 //
 #include <cinttypes>
 #include <cstring>
-#include "LogStream.h"
+#include "log_stream.h"
 
 namespace rookie{
     LogStream& LogStream::operator<<(const int32_t rhs) {

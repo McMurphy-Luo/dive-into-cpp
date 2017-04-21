@@ -10,26 +10,39 @@ set(CMAKE_CXX_FLAGS "-Werror -Wall -Wextra -O0")
 include_directories(${source_dir})
 include_directories(${BOOST_INCLUDE_DIRS})
 list(APPEND filesystem_source
-        ${source_dir}/filesystem/Directory.h
-        ${source_dir}/filesystem/Directory.cpp
-        ${source_dir}/filesystem/File.h
-        ${source_dir}/filesystem/File.cpp
+        ${source_dir}/filesystem/directory.h
+        ${source_dir}/filesystem/directory.cpp
+        ${source_dir}/filesystem/file.h
+        ${source_dir}/filesystem/file.cpp
         )
 list(APPEND logstream_source
-        ${source_dir}/logstream/LogStream.h
-        ${source_dir}/logstream/CErrorLog.h
-        ${source_dir}/logstream/LogStream.cpp
-        ${source_dir}/logstream/CErrorLog.cpp
+        ${source_dir}/logstream/log_stream.h
+        ${source_dir}/logstream/cerr_log.h
+        ${source_dir}/logstream/log_stream.cpp
+        ${source_dir}/logstream/cerr_log.cpp
         )
 list(APPEND socket_source
-        ${source_dir}/socket/Socket.h
-        ${source_dir}/socket/Socket.cpp
+        ${source_dir}/socket/socket.h
+        ${source_dir}/socket/socket.cpp
         )
+list(APPEND miscellaneous_source
+        ${source_dir}/miscellaneous/cpu_time.h
+        ${source_dir}/miscellaneous/cpu_time.cpp)
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
         ${socket_source}
+        ${miscellaneous_source}
         )
+message(STATUS ${BUILD_SHARED_LIBS})
 
-add_executable(filesystem_test ${source} test/filesystem/main.cpp)
+
+add_library(rookie STATIC ${source})
+add_executable(filesystem_test test/filesystem/main.cpp)
+target_link_libraries(filesystem_test rookie)
+add_executable(miscellaneous_test ${source} test/miscellaneous/main.cpp)
+target_link_libraries(miscellaneous_test rookie)
+
+set_property(TARGET rookie PROPERTY LIBRARY_OUTPUT_DIRECTORY ${lib_output_dir})
 set_property(TARGET filesystem_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
+set_property(TARGET miscellaneous_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})

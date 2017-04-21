@@ -2,7 +2,7 @@
 // Created by luojiayi on 17-4-6.
 //
 
-#include "CErrorLog.h"
+#include "cerr_log.h"
 #include <cstdio>
 #include <cerrno>
 #include <cstring>

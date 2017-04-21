@@ -2,14 +2,14 @@
 // Created by luojiayi on 4/15/17.
 //
 
-#include "Directory.h"
+#include "directory.h"
 #include <memory>
 #include <cstring>
 #include <functional>
 #include <cerrno>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <logstream/CErrorLog.h>
+#include <logstream/cerr_log.h>
 
 namespace rookie{
     namespace{

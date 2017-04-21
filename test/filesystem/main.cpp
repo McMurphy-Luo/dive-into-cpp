@@ -9,7 +9,7 @@
 #include <memory>
 #include <vector>
 #include <boost/core/ignore_unused.hpp>
-#include <filesystem/Directory.h>
+#include <filesystem/directory.h>
 
 void iter_directory(const rookie::Directory &d, int depth){
     char buf[BUFSIZ];

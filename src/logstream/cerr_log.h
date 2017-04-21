@@ -4,7 +4,7 @@
 
 #ifndef HELLO_CERRORLOG_H
 #define HELLO_CERRORLOG_H
-#include "LogStream.h"
+#include "log_stream.h"
 #include <cstdio>
 
 namespace rookie{
