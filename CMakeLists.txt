@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
-project(hello C CXX)
+project(rookie C CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(source_dir ${PROJECT_SOURCE_DIR}/src)
 set(exe_output_dir ${PROJECT_BINARY_DIR}/bin)
 set(lib_output_dir ${PROJECT_BINARY_DIR}/lib)
 find_package(Boost REQUIRED)
 set(CMAKE_CXX_COMPILER "g++")
-set(CMAKE_CXX_FLAGS "-Werror -Wall -Wextra -O0")
+set(CMAKE_CXX_FLAGS "-Werror -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Weffc++ -g")
 include_directories(${source_dir})
 include_directories(${BOOST_INCLUDE_DIRS})
 list(APPEND filesystem_source
@@ -27,7 +27,9 @@ list(APPEND socket_source
         )
 list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/cpu_time.h
-        ${source_dir}/miscellaneous/cpu_time.cpp)
+        ${source_dir}/miscellaneous/cpu_time.cpp
+        ${source_dir}/miscellaneous/process_limits.cpp
+        ${source_dir}/miscellaneous/process_limits.h)
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
@@ -43,6 +45,6 @@ target_link_libraries(filesystem_test rookie)
 add_executable(miscellaneous_test ${source} test/miscellaneous/main.cpp)
 target_link_libraries(miscellaneous_test rookie)
 
-set_property(TARGET rookie PROPERTY LIBRARY_OUTPUT_DIRECTORY ${lib_output_dir})
+set_property(TARGET rookie PROPERTY ARCHIVE_OUTPUT_DIRECTORY ${lib_output_dir})
 set_property(TARGET filesystem_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
 set_property(TARGET miscellaneous_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})

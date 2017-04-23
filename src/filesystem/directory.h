@@ -2,8 +2,8 @@
 // Created by luojiayi on 4/15/17.
 //
 
-#ifndef HELLO_DIRECTORY_H
-#define HELLO_DIRECTORY_H
+#ifndef ROOKIE_FILESYSTEM_DIRECTORY_H
+#define ROOKIE_FILESYSTEM_DIRECTORY_H
 
 #include <string>
 #include <vector>
@@ -23,4 +23,4 @@ namespace rookie{
     };
 }
 
-#endif //HELLO_DIRECTORY_H
+#endif //ROOKIE_FILESYSTEM_DIRECTORY_H

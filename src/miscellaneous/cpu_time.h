@@ -2,8 +2,8 @@
 // Created by luojiayi on 4/21/17.
 //
 
-#ifndef HELLO_TIME_H
-#define HELLO_TIME_H
+#ifndef ROOKIE_MISCELLANEOUS_TIME_H
+#define ROOKIE_MISCELLANEOUS_TIME_H
 #include <cstdint>
 
 namespace rookie{
@@ -14,4 +14,4 @@ namespace rookie{
     };
 }
 
-#endif //HELLO_TIME_H
+#endif //ROOKIE_MISCELLANEOUS_TIME_H

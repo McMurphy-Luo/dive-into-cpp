@@ -2,8 +2,8 @@
 // Created by luojiayi on 17-4-4.
 //
 
-#ifndef HELLO_LOGSTREAM_H
-#define HELLO_LOGSTREAM_H
+#ifndef ROOKIE_LOGSTREAM_LOG_STREAM_H
+#define ROOKIE_LOGSTREAM_LOG_STREAM_H
 #include <cstdint>
 #include <string>
 #include <boost/noncopyable.hpp>
@@ -29,4 +29,4 @@ namespace rookie{
 }
 
 
-#endif //HELLO_LOGSTREAM_H
+#endif //ROOKIE_LOGSTREAM_LOG_STREAM_H

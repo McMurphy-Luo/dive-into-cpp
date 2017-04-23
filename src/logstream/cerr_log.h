@@ -2,8 +2,8 @@
 // Created by luojiayi on 17-4-6.
 //
 
-#ifndef HELLO_CERRORLOG_H
-#define HELLO_CERRORLOG_H
+#ifndef ROOKIE_LOGSTREAM_CERR_LOG_H
+#define ROOKIE_LOGSTREAM_CERR_LOG_H
 #include "log_stream.h"
 #include <cstdio>
 
@@ -17,4 +17,4 @@ namespace rookie{
     };
 }
 
-#endif //HELLO_CERRORLOG_H
+#endif //ROOKIE_LOGSTREAM_CERR_LOG_H

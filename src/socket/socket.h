@@ -1,5 +1,5 @@
-#ifndef HELLO_SOCKET_H
-#define HELLO_SOCKET_H
+#ifndef ROOKIE_SOCKET_SOCKET_H
+#define ROOKIE_SOCKET_SOCKET_H
 #include <cstdint>
 #include <tuple>
 #include <netinet/in.h>
@@ -21,4 +21,4 @@ namespace rookie{
 };
 
 
-#endif //HELLO_SOCKET_H
+#endif //ROOKIE_SOCKET_SOCKET_H
