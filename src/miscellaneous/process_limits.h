@@ -22,15 +22,13 @@ namespace rookie{
             kNICE,
             kNOFILE,
             kNPROC,
-            kNPTS,
             kRSS,
-            kSBSIZE,
+            kRTPRIO,
+            kRTTIME,
             kSIGPENDING,
-            kSTACK,
-            kSWAP,
-            kVMEM
+            kSTACK
         };
-//        static int64_t getLimit(LimitType of_which);
+        static int64_t getLimit(LimitType of_which);
         static std::string getLimitDescription(LimitType of_which);
     };
 }

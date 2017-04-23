@@ -10,5 +10,8 @@ int main(int argc, char* argv[]){
     boost::ignore_unused(argv);
     using rookie::ProcessLimits;
 
-    std::cout << ProcessLimits::getLimitDescription(ProcessLimits::LimitType::kAS) << std::endl;
+    std::cout << "Stack limit is " << ProcessLimits::getLimit(ProcessLimits::LimitType::kSTACK) << ".\n";
+    std::cout << "Stack limit description: ";
+    std::cout << ProcessLimits::getLimitDescription(ProcessLimits::LimitType::kSTACK);
+    std::cout << std::endl;
 }

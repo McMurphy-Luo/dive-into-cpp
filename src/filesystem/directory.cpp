@@ -12,25 +12,27 @@
 #include <logstream/cerr_log.h>
 
 namespace rookie{
-    namespace{
-        typedef std::unique_ptr<DIR, std::function<void(DIR*)>> dir_handler_t;
-        dir_handler_t get_dir_handler(const std::string& path){
-            auto result = dir_handler_t(
-                    opendir(path.c_str()),
-                    [](DIR* handler) -> void{
-                        if (handler) {
-                            closedir(handler);
-                        }
-                    }
-            );
-            if (!result) {
-                CErrorLog log;
-                log << "open directory error;" << CErrorLog::endl;
-                log.logCStdError();
+// unamed namespace start for static staff of this file
+namespace{
+    typedef std::unique_ptr<DIR, std::function<void(DIR*)>> dir_handler_t;
+    dir_handler_t get_dir_handler(const std::string& path){
+        auto result = dir_handler_t(
+            opendir(path.c_str()),
+            [](DIR* handler) -> void{
+                if (handler) {
+                    closedir(handler);
+                }
             }
-            return result;
-        };
-    }
+        );
+        if (!result) {
+            CErrorLog log;
+            log << "open directory error;" << CErrorLog::endl;
+            log.logCStdError();
+        }
+        return result;
+    };
+}
+// unamed namespace end
 
     bool Directory::isDirectory(const std::string &path) {
         struct stat buf;
