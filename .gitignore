@@ -6,3 +6,6 @@ CMakeCache.txt
 cmake_install.cmake
 hello.cbp
 Makefile
+lib/
+.idea
+*.cbp
