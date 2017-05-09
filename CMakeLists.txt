@@ -29,7 +29,11 @@ list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/cpu_time.h
         ${source_dir}/miscellaneous/cpu_time.cpp
         ${source_dir}/miscellaneous/process_limits.cpp
-        ${source_dir}/miscellaneous/process_limits.h)
+        ${source_dir}/miscellaneous/process_limits.h
+        ${source_dir}/miscellaneous/sigset.h
+        ${source_dir}/miscellaneous/sigset.cpp
+        )
+
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
