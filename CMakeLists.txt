@@ -24,14 +24,18 @@ list(APPEND logstream_source
 list(APPEND socket_source
         ${source_dir}/socket/socket.h
         ${source_dir}/socket/socket.cpp
+        ${source_dir}/socket/fd_set.h
+        ${source_dir}/socket/fd_set.cpp
         )
 list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/cpu_time.h
         ${source_dir}/miscellaneous/cpu_time.cpp
         ${source_dir}/miscellaneous/process_limits.cpp
         ${source_dir}/miscellaneous/process_limits.h
-        ${source_dir}/miscellaneous/signal.h
-        ${source_dir}/miscellaneous/signal.cpp)
+        ${source_dir}/miscellaneous/sigset.h
+        ${source_dir}/miscellaneous/sigset.cpp
+        )
+s
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}

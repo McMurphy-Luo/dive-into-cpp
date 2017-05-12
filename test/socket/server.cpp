@@ -10,6 +10,8 @@ int main(int argc, char* argv[]){
 
     rookie::Socket sk;
 
+    sk.bind(6314);
+    sk.listen();
     auto result = sk.accept();
 
     int fd = std::get<0>(result);
@@ -20,11 +22,11 @@ int main(int argc, char* argv[]){
     ssize_t readed = 0;
     readed = read(fd, buf, sizeof(buf));
 
-    log << "Connection established! fd is " << fd << rookie::CErrorLog::endl;
-    log << "received: " << readed << rookie::CErrorLog::endl;
+    log << "Connection established! fd is " << fd << std::endl;
+    log << "received: " << readed << std::endl;
 
     while( readed != -1 && readed ){
-        log << buf << rookie::CErrorLog::endl;
+        log << buf << std::endl;
         memset(buf, 0, sizeof(buf));
         readed = read(fd, buf, sizeof(buf));
     }

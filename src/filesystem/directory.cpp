@@ -26,7 +26,7 @@ namespace{
         );
         if (!result) {
             CErrorLog log;
-            log << "open directory error;" << CErrorLog::endl;
+            log << "open directory error;" << std::endl;
             log.logCStdError();
         }
         return result;
@@ -38,7 +38,7 @@ namespace{
         struct stat buf;
         if (stat(path.c_str(), &buf) != 0){
             CErrorLog log;
-            log << "stat error!" << CErrorLog::endl;
+            log << "stat error!" << std::endl;
             log.logCStdError();
             return false;
         }
@@ -77,7 +77,7 @@ namespace{
         }
         if (errno != 0){
             CErrorLog log;
-            log << "readdir error!" << CErrorLog::endl;
+            log << "readdir error!" << std::endl;
             log.logCStdError();
         }
         return result;

@@ -6,12 +6,11 @@
 #define ROOKIE_LOGSTREAM_LOG_STREAM_H
 #include <cstdint>
 #include <string>
+#include <iostream>
 #include <boost/noncopyable.hpp>
 
 namespace rookie{
     class LogStream: public boost::noncopyable{
-    public:
-        static constexpr char endl = '\n';
     public:
         LogStream():buf_(){};
         virtual ~LogStream() = default;
@@ -22,11 +21,14 @@ namespace rookie{
         LogStream& operator<<(const double rhs);
         LogStream& operator<<(const long double rsh);
         LogStream& operator<<(const char rhs);
+        LogStream& operator<<(std::ostream& (*endl)(std::ostream&));
 
     protected:
         std::string buf_;
     };
 }
+
+
 
 
 #endif //ROOKIE_LOGSTREAM_LOG_STREAM_H

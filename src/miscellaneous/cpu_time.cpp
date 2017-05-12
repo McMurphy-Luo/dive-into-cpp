@@ -11,7 +11,7 @@ namespace rookie{
         long result = sysconf(_SC_CLK_TCK);
         if (result < 0){
             CErrorLog log;
-            log << "sysconf error!" << CErrorLog::endl;
+            log << "sysconf error!" << std::endl;
             log.logCStdError();
         }
         return result;
