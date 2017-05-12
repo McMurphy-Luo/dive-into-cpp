@@ -9,12 +9,12 @@
 #include <boost/noncopyable.hpp>
 
 namespace rookie{
-    class LogStream: boost::noncopyable{
+    class LogStream: public boost::noncopyable{
     public:
         static constexpr char endl = '\n';
     public:
         LogStream():buf_(){};
-        virtual ~LogStream(){};
+        virtual ~LogStream() = default;
         LogStream& operator<<(const int32_t rhs);
         LogStream& operator<<(const int64_t rhs);
         LogStream& operator<<(const std::string &rhs);
