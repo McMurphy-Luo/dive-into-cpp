@@ -4,6 +4,7 @@
 #include <cinttypes>
 #include <cstring>
 #include "log_stream.h"
+#include <boost/core/ignore_unused.hpp>
 
 namespace rookie{
     LogStream& LogStream::operator<<(const int32_t rhs) {
@@ -50,6 +51,12 @@ namespace rookie{
 
     LogStream& LogStream::operator<<(const char rhs){
         buf_.push_back(rhs);
+        return *this;
+    };
+
+    LogStream& LogStream::operator<<(std::ostream& (*endl)(std::ostream&)){
+        boost::ignore_unused(endl);
+        buf_.push_back('\n');
         return *this;
     };
 }

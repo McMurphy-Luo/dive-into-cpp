@@ -11,7 +11,7 @@ namespace rookie{
         struct stat buf;
         if (stat(path.c_str(), &buf) != 0){
             CErrorLog log;
-            log << "stat error!" << CErrorLog::endl;
+            log << "stat error!" << std::endl;
             log.logCStdError();
             return false;
         }

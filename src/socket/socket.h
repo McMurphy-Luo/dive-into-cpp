@@ -11,11 +11,14 @@ namespace rookie{
     public:
         Socket();
         ~Socket();
+        void bind(int32_t port);
+        void listen();
+        int connect();
         std::tuple<int, sockaddr_in> accept();
         void close();
 
     private:
-        void initialize();
+        bool closed;
         int fd_;
     };
 };

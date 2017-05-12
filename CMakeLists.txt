@@ -24,6 +24,8 @@ list(APPEND logstream_source
 list(APPEND socket_source
         ${source_dir}/socket/socket.h
         ${source_dir}/socket/socket.cpp
+        ${source_dir}/socket/fd_set.h
+        ${source_dir}/socket/fd_set.cpp
         )
 list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/cpu_time.h

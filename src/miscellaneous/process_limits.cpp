@@ -151,7 +151,7 @@ namespace{
         }
         if (sys_call_result < 0){
             CErrorLog log;
-            log << "getrlimit call error!" << CErrorLog::endl;
+            log << "getrlimit call error!" << std::endl;
             log.logCStdError();
         }
         result = limit.rlim_cur;

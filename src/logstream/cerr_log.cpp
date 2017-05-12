@@ -22,7 +22,7 @@ namespace rookie{
         this->operator<<(std::strerror(errno));
         this->operator<<( "\"" );
         this->operator<<( ";" );
-        this->operator<<( CErrorLog::endl );
+        this->operator<<( std::endl );
     };
 
     CErrorLog::~CErrorLog(){
