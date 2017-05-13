@@ -16,7 +16,7 @@ namespace rookie{
         static bool isDirectory(const std::string &path);
 
     public:
-        explicit Directory(std::string path)
+        explicit Directory(const std::string& path)
                 :File(path){};
         bool exists() const;
         std::vector<std::shared_ptr<File>> children() const;

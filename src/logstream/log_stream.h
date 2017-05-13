@@ -7,13 +7,14 @@
 #include <cstdint>
 #include <string>
 #include <iostream>
-#include <boost/noncopyable.hpp>
 
 namespace rookie{
-    class LogStream: public boost::noncopyable{
+    class LogStream{
     public:
         LogStream():buf_(){};
         virtual ~LogStream() = default;
+        LogStream(const LogStream&) = delete;
+        LogStream& operator=(const LogStream&) = delete;
         LogStream& operator<<(const int32_t rhs);
         LogStream& operator<<(const int64_t rhs);
         LogStream& operator<<(const std::string &rhs);

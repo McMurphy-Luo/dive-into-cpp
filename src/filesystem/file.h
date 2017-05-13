@@ -11,8 +11,8 @@ namespace rookie{
     public:
         static bool isRegularFile(const std::string &path);
     public:
-        explicit File(std::string path):path_(path) { };
-        virtual ~File(){};
+        explicit File(std::string path):path_(std::move(path)) { };
+        virtual ~File() = default;
         virtual bool exists() const;
         virtual std::string getPath() const { return path_; } ;
 

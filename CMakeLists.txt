@@ -16,6 +16,10 @@ list(APPEND filesystem_source
         ${source_dir}/filesystem/file.cpp
         )
 
+list(APPEND multiplexing_source
+        ${source_dir}/multiplexing/poll.h
+        ${souree_dir}/multiplexing/poll.cpp)
+
 list(APPEND logstream_source
         ${source_dir}/logstream/log_stream.h
         ${source_dir}/logstream/cerr_log.h
@@ -38,7 +42,7 @@ list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/sigset.h
         ${source_dir}/miscellaneous/sigset.cpp
         )
-s
+
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
