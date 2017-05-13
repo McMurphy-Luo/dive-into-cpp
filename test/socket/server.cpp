@@ -2,12 +2,15 @@
 #include <tuple>
 #include <iostream>
 #include <unistd.h>
-#include "cerr_log.h"
-#include "socket.h"
+#include <boost/core/ignore_unused.hpp>
+#include "logstream/cerr_log.h"
+#include "socket/socket.h"
 
 int main(int argc, char* argv[]){
-    rookie::CErrorLog log;
+    boost::ignore_unused(argc);
+    boost::ignore_unused(argv);
 
+    rookie::CErrorLog log;
     rookie::Socket sk;
 
     sk.bind(6314);
@@ -16,21 +19,18 @@ int main(int argc, char* argv[]){
 
     int fd = std::get<0>(result);
 
-    char buf[1024];
-
-    memset(buf, 0, sizeof(buf));
-    ssize_t readed = 0;
-    readed = read(fd, buf, sizeof(buf));
-
     log << "Connection established! fd is " << fd << std::endl;
-    log << "received: " << readed << std::endl;
 
-    while( readed != -1 && readed ){
-        log << buf << std::endl;
-        memset(buf, 0, sizeof(buf));
-        readed = read(fd, buf, sizeof(buf));
+    ssize_t read_bytes = 0;
+    char buf[1024];
+    memset(buf, 0, sizeof(buf));
+
+    read_bytes = read(fd, buf, sizeof(buf));
+    if (!(read_bytes != -1 && read_bytes)){
+        log << "read error!" << std::endl;
+        log.logCStdError();
     }
-
-    log << "hello world!" << "\n";
+    log << "received: " << read_bytes << std::endl;
+    log << buf << std::endl;
     return 0;
 }
