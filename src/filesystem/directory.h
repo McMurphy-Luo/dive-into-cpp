@@ -11,10 +11,8 @@
 #include "file.h"
 
 namespace rookie{
+    bool isDirectory(const std::string &path);
     class Directory : public File{
-    public:
-        static bool isDirectory(const std::string &path);
-
     public:
         explicit Directory(const std::string& path)
                 :File(path){};

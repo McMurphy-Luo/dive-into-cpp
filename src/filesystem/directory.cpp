@@ -34,7 +34,7 @@ namespace{
 }
 // unamed namespace end
 
-    bool Directory::isDirectory(const std::string &path) {
+    bool isDirectory(const std::string &path) {
         struct stat buf;
         if (stat(path.c_str(), &buf) != 0){
             CErrorLog log;

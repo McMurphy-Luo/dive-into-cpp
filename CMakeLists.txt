@@ -18,7 +18,8 @@ list(APPEND filesystem_source
 
 list(APPEND multiplexing_source
         ${source_dir}/multiplexing/poll.h
-        ${souree_dir}/multiplexing/poll.cpp)
+        ${source_dir}/multiplexing/poll.cpp
+        )
 
 list(APPEND logstream_source
         ${source_dir}/logstream/log_stream.h
@@ -48,6 +49,7 @@ list(APPEND source
         ${logstream_source}
         ${socket_source}
         ${miscellaneous_source}
+        ${multiplexing_source}
         )
 
 message(STATUS ${BUILD_SHARED_LIBS})
@@ -62,6 +64,8 @@ add_executable(socket_server_test test/socket/server.cpp)
 target_link_libraries(socket_server_test rookie)
 add_executable(socket_client_test test/socket/client.cpp)
 target_link_libraries(socket_client_test rookie)
+add_executable(test_test test/test/main.cpp)
+target_link_libraries(test_test rookie)
 
 set_property(TARGET rookie PROPERTY ARCHIVE_OUTPUT_DIRECTORY ${lib_output_dir})
 set_property(TARGET filesystem_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
@@ -69,3 +73,4 @@ set_property(TARGET cpu_time_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output
 set_property(TARGET process_limits_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
 set_property(TARGET socket_server_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
 set_property(TARGET socket_client_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})
+set_property(TARGET test_test PROPERTY RUNTIME_OUTPUT_DIRECTORY ${exe_output_dir})

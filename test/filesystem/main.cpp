@@ -26,11 +26,11 @@ void iter_directory(const rookie::Directory &d, int depth){
 //    }
 
     for (auto child : d.children()){
-        if (rookie::File::isRegularFile(child->getPath())){
+        if (rookie::isRegularFile(child->getPath())){
             std::cout << buf << "----" << child->getPath() << std::endl;
             continue;
         }
-        if (rookie::Directory::isDirectory(child->getPath())){
+        if (rookie::isDirectory(child->getPath())){
             iter_directory(*(std::dynamic_pointer_cast<rookie::Directory>(child)), depth+1);
         }
     }

@@ -7,9 +7,8 @@
 #include <string>
 
 namespace rookie{
+    bool isRegularFile(const std::string &path);
     class File {
-    public:
-        static bool isRegularFile(const std::string &path);
     public:
         explicit File(std::string path):path_(std::move(path)) { };
         virtual ~File() = default;

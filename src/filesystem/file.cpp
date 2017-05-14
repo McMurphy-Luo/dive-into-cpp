@@ -7,7 +7,7 @@
 #include <logstream/cerr_log.h>
 
 namespace rookie{
-    bool File::isRegularFile(const std::string &path) {
+    bool isRegularFile(const std::string &path) {
         struct stat buf;
         if (stat(path.c_str(), &buf) != 0){
             CErrorLog log;
