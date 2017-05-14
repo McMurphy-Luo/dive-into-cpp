@@ -2,11 +2,13 @@
 // Created by luojiayi on 5/14/17.
 //
 
-#ifndef ROOKIE_POLL_H
-#define ROOKIE_POLL_H
+#ifndef ROOKIE_MULTIPLEXING_POLL_H
+#define ROOKIE_MULTIPLEXING_POLL_H
 
-class poll {
+namespace rookie{
+    class poll {
 
-};
+    };
+}
 
-#endif //ROOKIE_POLL_H
+#endif //ROOKIE_MULTIPLEXING_POLL_H

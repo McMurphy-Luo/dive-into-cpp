@@ -17,6 +17,8 @@ list(APPEND filesystem_source
         )
 
 list(APPEND multiplexing_source
+        ${source_dir}/multiplexing/fd_set.h
+        ${source_dir}/multiplexing/fd_set.cpp
         ${source_dir}/multiplexing/poll.h
         ${source_dir}/multiplexing/poll.cpp
         )
@@ -31,8 +33,6 @@ list(APPEND logstream_source
 list(APPEND socket_source
         ${source_dir}/socket/socket.h
         ${source_dir}/socket/socket.cpp
-        ${source_dir}/socket/fd_set.h
-        ${source_dir}/socket/fd_set.cpp
         )
 
 list(APPEND miscellaneous_source
@@ -44,10 +44,15 @@ list(APPEND miscellaneous_source
         ${source_dir}/miscellaneous/sigset.cpp
         )
 
+list(APPEND utility_source
+        ${source_dir}/utility/reader.h
+        ${source_dir}/utility/reader.cpp)
+
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
         ${socket_source}
+        ${utility_source}
         ${miscellaneous_source}
         ${multiplexing_source}
         )

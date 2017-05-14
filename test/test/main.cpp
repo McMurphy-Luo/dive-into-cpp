@@ -14,8 +14,12 @@ int main(int argc, char* argv[]){
     boost::ignore_unused(argv);
     std::string test = "Hello World!";
 
-    cout << test.find("o") << endl;
-    cout << test.find("k") << endl;
-    cout << test.substr(0, 7) << endl;
+    test.erase(0, 12);
+
+    std::string test2;
+    cout << test.empty() << endl;
+    cout << test.length() << endl;
+    cout << test2.empty() << endl;
+    cout << test2.length() << endl;
     return 0;
 }
