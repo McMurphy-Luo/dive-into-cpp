@@ -6,13 +6,15 @@
 #include <netinet/in.h>
 #include <boost/core/ignore_unused.hpp>
 #include <boost/optional.hpp>
-#include <socket/socket.h>
-#include <logstream/cerr_log.h>
+#include "socket/socket.h"
+#include "logstream/cerr_log.h"
+#include "utility/reader.h"
 
+
+using boost::optional;
 using rookie::Socket;
 using rookie::CErrorLog;
-using boost::optional;
-
+using rookie::Reader;
 
 
 int main(int argc, char *argv[]){
@@ -20,24 +22,23 @@ int main(int argc, char *argv[]){
     boost::ignore_unused(argv);
 
 
-    Reader reader(STDIN_FILENO);
-
-    std::cout << reader.readLine() << std::endl;
-
+    Reader stdin_reader(STDIN_FILENO);
     Socket client_socket;
     std::shared_ptr<int> result = client_socket.connect("127.0.0.1", 6314);
-    char message[] = "Hello World!";
-    ssize_t wrote = write(*result, message, sizeof(message));
-    if (wrote < 0){
-        CErrorLog log;
-        log << "Write error!" << std::endl;
-        log.logCStdError();
+    Reader socket_reader(*result);
+
+
+
+    for (;;){
+        boost::optional<std::string> line_read_from_stdin = stdin_reader.readLine();
+        if (!line_read_from_stdin) break;
+        ssize_t wrote = write(*result, line_read_from_stdin->c_str(), line_read_from_stdin->length());
+        if (wrote < 0){
+            CErrorLog log;
+            log << "Write error!" << std::endl;
+            log.logCStdError();
+        }
     }
-    if (wrote < static_cast<ssize_t>(sizeof(message))){
-        CErrorLog log;
-        log << "Write bytes less than that should be wrote! Already wrote " << wrote << ".";
-        log.logCStdError();
-    }
-    sleep(5);
+
     return 0;
 }
