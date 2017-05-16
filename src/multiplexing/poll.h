@@ -6,7 +6,7 @@
 #define ROOKIE_MULTIPLEXING_POLL_H
 
 namespace rookie{
-    class poll {
+    class Poll {
 
     };
 }

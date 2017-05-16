@@ -16,6 +16,16 @@ list(APPEND filesystem_source
         ${source_dir}/filesystem/file.cpp
         )
 
+list(APPEND http_source
+        ${source_dir}/http/parser.h
+        ${source_dir}/http/parser.cpp
+        ${source_dir}/http/http.h
+        ${source_dir}/http/http.cpp
+        ${source_dir}/http/request.h
+        ${source_dir}/http/request.cpp
+        ${source_dir}/http/response.h
+        ${source_dir}/http/response.cpp)
+
 list(APPEND multiplexing_source
         ${source_dir}/multiplexing/fd_set.h
         ${source_dir}/multiplexing/fd_set.cpp
@@ -51,6 +61,7 @@ list(APPEND utility_source
 list(APPEND source
         ${filesystem_source}
         ${logstream_source}
+        ${http_source}
         ${socket_source}
         ${utility_source}
         ${miscellaneous_source}

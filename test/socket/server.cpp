@@ -16,9 +16,7 @@ int main(int argc, char* argv[]){
     boost::ignore_unused(argc);
     boost::ignore_unused(argv);
 
-    CErrorLog log;
     Socket sk;
-
     sk.bind(6314);
     sk.listen();
     auto result = sk.accept();
